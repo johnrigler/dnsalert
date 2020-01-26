@@ -3,7 +3,7 @@
 if [[ $CIRCLECI == 'true' ]]
 then
 DIR=/home/circleci/project
-apt-get install dnsutils
+sudo apt-get install dnsutils
 else
 DIR=/root/dnsalert
 fi
