@@ -3,17 +3,20 @@
 if [[ $CIRCLECI == 'true' ]]
 then
 DIR=/home/circleci/project
-sudo apt-get install dnsutils
 else
 DIR=/root/dnsalert
 fi
 
-COUNT=$(for X in 1 2 3 4 5 6 7 8 9 10
+dig_mx() {
+
+curl http://dime.cash/dig_mx.php?host="$1" 2>/dev/null
+
+}
+
+for X in 1 2 3 4 5 
 do
-dig gofundspark.com MX +short
-sleep 0
-done | sort -u )
+dig_mx gofundspark.com
+sleep 2
+done | sort -u > $$
 
-let COUNT=COUNT-1
-
-exit $COUNT 
+cat $$
