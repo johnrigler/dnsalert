@@ -1,0 +1,8 @@
+dnsalert.trigger () 
+{ 
+    cd /root/dnsalert;
+    date >> date.txt;
+    git add .;
+    date | git commit -F -;
+    git push
+}
