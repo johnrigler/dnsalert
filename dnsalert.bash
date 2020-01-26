@@ -26,6 +26,7 @@ cat $$ | grep "0 gofundspark-com.mail.protection.outlook.com."
 
 if [[ $? -ne 0 ]]
   then
+  rm $$
   exit 1
   fi
 
@@ -35,7 +36,8 @@ cat $$ | grep -v "0 gofundspark-com.mail.protection.outlook.com."
 
 if [[ $? -eq 0 ]]
   then
-  exit 1
+  rm $$
+  exit 2
   fi
- 
+
 rm $$
