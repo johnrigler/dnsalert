@@ -21,7 +21,7 @@ dig_mx $HOST
 sleep 0
 done | sort -u  > $$
 
-cat $$ | grep "0 $1.xx.mail.protection.outlook.com."
+cat $$ | grep "0 $1.mail.protection.outlook.com."
 
 # Test for a good entry
 
