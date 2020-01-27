@@ -48,7 +48,7 @@ RC=$?
 echo $RC
 if [[ $RC -ne 0 ]]
 then
-exit $RC
+echo "Fail"
+exit 1 
 fi
 done
-exit 0
