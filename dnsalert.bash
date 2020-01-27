@@ -44,11 +44,11 @@ if [[ $? -eq 0 ]]
 python mxcheck.py | while read MX
 do
 sample_mx $MX
-if [[ $? -ne 0 ]]
+RC=$?
+echo $RC
+if [[ $RC -ne 0 ]]
 then
-rm $$
-exit $?
+exit $RC
 fi
 done
-rm $$
 exit 0
