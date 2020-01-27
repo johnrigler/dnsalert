@@ -44,5 +44,11 @@ if [[ $? -eq 0 ]]
 python mxcheck.py | while read MX
 do
 sample_mx $MX
-echo $?
+if [[ $? -ne 0 ]]
+then
+rm $$
+exit $?
+fi
 done
+rm $$
+exit 0
