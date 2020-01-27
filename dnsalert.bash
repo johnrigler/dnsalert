@@ -45,10 +45,8 @@ python mxcheck.py | while read MX
 do
 sample_mx $MX
 RC=$?
-echo $RC
 if [[ $RC -ne 0 ]]
 then
-echo "Fail"
 exit 1 
 fi
 done
