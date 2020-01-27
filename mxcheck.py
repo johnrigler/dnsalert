@@ -1,12 +1,17 @@
-print("xx")
-fqdn = sys.argv[1]
 
-list = ([split])
+# fqdn = sys.argv[1]
 
-    cnt = 0
-    for n, c in enumerate(list):
-       x = b58_dcmap.find(c)
-       if x!= -1:
-          list[cnt] = b58_digits[x]
-       if c == 'i':
+name= "gofundspark.com"
 
+split = name.split(".")
+count = len(split) - 2
+newname = ""
+
+for i in split:
+    newname = newname + i
+    if count == 0:
+      newname = newname + "-"
+    elif count > 0:
+      newname = newname + "."
+    count = count - 1
+print(newname)
