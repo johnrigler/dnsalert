@@ -1,10 +1,6 @@
 
 lineList = [line.rstrip('\n') for line in open("mxcheck.txt")]
 
-split = name.split(".")
-count = len(split) - 2
-newname = ""
-
 for host in lineList:
     split = host.split(".")
     count = len(split) -2

@@ -13,31 +13,36 @@ curl http://dime.cash/dig_mx.php?host="$1" 2>/dev/null
 
 }
 
+sample_mx() {
+HOST=$(echo $1 | sed 's/-/./')
 for X in 1 2 3 4 5 
 do
-dig_mx gofundspark.com
+dig_mx $HOST 
 sleep 0
-done | sort -u > $$
+done | sort -u  > $$
 
-cat $$ | grep "0 gofundspark-com.mail.protection.outlook.com."
-
+cat $$ | grep "0 $1.mail.protection.outlook.com."
 
 # Test for a good entry
 
 if [[ $? -ne 0 ]]
   then
-  rm $$
-  exit 1
+  return 1
   fi
 
 # Test for old records
 
-cat $$ | grep -v "0 gofundspark-com.mail.protection.outlook.com."
+cat $$ | grep -v "0 $1.mail.protection.outlook.com."
 
 if [[ $? -eq 0 ]]
   then
-  rm $$
-  exit 2
+  return 2
   fi
 
-rm $$
+}
+
+python mxcheck.py | while read MX
+do
+sample_mx $MX
+echo $?
+done
