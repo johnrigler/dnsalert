@@ -4,6 +4,8 @@ pipeline {
          stage('Build') {
              steps {
                  echo 'Building...'
+                 pwd
+                 ./dnsalert.bash
                  exit 0
              }
              post {
