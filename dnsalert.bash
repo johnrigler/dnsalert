@@ -41,7 +41,7 @@ if [[ $? -eq 0 ]]
 
 }
 
-python mxcheck.py | while read MX
+python mxcheck.pyc | while read MX
 do
 sample_mx $MX
 RC=$?
